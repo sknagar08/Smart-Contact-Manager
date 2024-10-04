@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section>
+		<div class="m-3">
+			<div class="">
+				<h1 class="text-center" th:text="${form_type == 'add'} ? 'Add New Contact' : 'Update Contact'"></h1>
+				<div class="container text-center" style="width: 50%;" th:if="${message}" >
+					<div class="alert" role="alert" th:text="${message.content}" th:classappend="'alert-' + ${message.type}" ></div>
+				</div>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form th:action="${form_type == 'add'} ? @{/user/add-contact} : @{'/user/update-contact/' + ${contact.id}}" method="post"
+								th:object="${contact}" enctype="multipart/form-data">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-plus"></i></span>
+									<input type="text" class="form-control" placeholder="Enter Name*" name="name" id="name" th:value="${contact.name}" required >
+								</div>
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user-alt"></i></span>
+									<input type="text" class="form-control" placeholder="Enter Nickname" name="nickname" id="nickname" th:value="${contact.nickname}" >
+								</div>
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
+									<input type="number" class="form-control" placeholder="Enter Phone Number*" name="phone" id="phone" th:value="${contact.phone}" required >
+								</div>
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+									<input type="email" class="form-control" placeholder="Enter Email" name="email" id="email" th:value="${contact.email}" >
+								</div>
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-briefcase"></i></span>
+									<input type="text" class="form-control" placeholder="Enter Work" name="work" id="work" th:value="${contact.work}" >
+								</div>
+								<div class="input-group mb-3">
+									<textarea class="form-control" rows="5" placeholder="Enter Contact Description (Max 500 words allowed)" id="description" name="description" th:text="${contact.description}" ></textarea>
+								</div>
+								<div class="mb-3">
+									<label for="profilePhoto" class="form-label">Choose Profile Photo</label>
+									<input type="file" name="profileImage" id="profilePhoto" class="form-control">
+								</div>
+
+								<button type="submit" class="btn bg-primary text-white" th:text="${form_type == 'add'} ? 'Add Contact' : 'Update'"></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

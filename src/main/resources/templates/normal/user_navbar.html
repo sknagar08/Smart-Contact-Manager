@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<nav class="navbar fixed-top navbar-expand-lg bg-primary navbar-dark"
+		th:fragment="navbar">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/user/dashboard}">Smart Contact Manager</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
+					<li class="nav-item"><a class="nav-link active" th:href="@{/user/dashboard}">Home</a></li>
+					
+					<li class="nav-item"><p class="nav-link active m-0" th:text="${user.name}"></p></li>
+					<li class="nav-item"><a class="nav-link active" th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</body>
+</html>

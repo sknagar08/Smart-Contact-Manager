@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section>
+		<div class="container text-center">
+			<div>
+				<img style="height: 200px; width: 200px;" th:src="@{'/images/contact-logo.jpg'}">
+			</div>
+			<h2 class="mt-3 text-capitalize fw-light fst-italic">Start adding your contacts to cloud</h2>
+			<a th:href="@{/user/add-contact}" class="btn btn-bg-primary mt-3">Add New Contact</a>
+			<a th:href="@{/user/contacts/0}" class="btn btn-bg-primary-outline mt-3">View Your Contacts</a>
+		</div>
+	</section>
+</body>
+</html>

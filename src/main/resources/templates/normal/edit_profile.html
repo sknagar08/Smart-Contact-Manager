@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section>
+		<div class="container my-3">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card p-4">
+						<h1 class="text-center">Update Profile</h1>
+
+						<form th:action="@{/user/edit-profile}" method="post" th:object="${user}" enctype="multipart/form-data" >
+							<div class="mb-3">
+								<label for="name" class="form-label">Name*</label>
+								<input type="text" class="form-control" id="name" aria-describedby="emailHelp" th:value="${user.name}" th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}" name="name" placeholder="Ex. Sunil Kumar Nagar" required>
+								<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email*</label>
+								<input type="email" class="form-control" id="email" aria-describedby="emailHelp" th:value="${user.email}" name="email" placeholder="This will be used as your username for login" required>
+							</div>
+							<div class="mb-3">
+								<label for="about" class="form-label">About</label>
+								<textarea rows="10" id="about" class="form-control" th:text="${user.about}" name="about" placeholder="Write something about you" ></textarea>
+							</div>
+							<div class="mb-3">
+									<label for="profilePhoto" class="form-label">Choose Profile Image</label>
+									<input type="file" name="profileImage" id="profilePhoto" class="form-control" >
+								</div>
+							<div class="container text-center">
+								<button type="submit" class="btn bg-primary text-white">Update</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

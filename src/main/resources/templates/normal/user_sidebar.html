@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="sidebar" th:fragment="sidebar" >
+	
+		<span class="sidebar-closer" onclick="toggleSidebar()"><i class="fa-solid fa-xmark"></i></span>
+	
+		<a th:href="@{/user/dashboard}" class="item"><i class="fa-solid fa-house"></i> Home</a>
+		<a th:href="@{/user/profile}" class="item"><i class="fa-solid fa-user"></i> Your Profile</a>
+		<a th:href="@{/user/contacts/0}" class="item"><i class="fa-solid fa-eye"></i> View Contacts</a>
+		<a th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-plus"></i> Add Contact</a>
+		<a th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section>
+		<div class="container my-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card p-4">
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}"
+							th:text="${session.message.content}" class="alert text-center"
+							role="alert"></div>
+
+						<h1 class="text-center">Create Your Account</h1>
+
+						<form th:action="@{/signup}" method="post" th:object="${user}" >
+							<div class="mb-3">
+								<label for="name" class="form-label">Name*</label>
+								<input type="text" class="form-control" id="name" aria-describedby="emailHelp" th:value="${user.name}" th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}" name="name" placeholder="Ex. Sunil Kumar Nagar" required>
+								<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email*</label>
+								<input type="email" class="form-control" id="email" aria-describedby="emailHelp" th:value="${user.email}" name="email" placeholder="This will be used as your username for login" required>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password*</label>
+								<input type="password" class="form-control" id="password" name="password" placeholder="Enter a strong password" required>
+							</div>
+							<div class="mb-3">
+								<label for="about" class="form-label">About</label>
+								<textarea rows="10" id="about" class="form-control" th:text="${user.about}" name="about" placeholder="Write something about you" ></textarea>
+							</div>
+							<div class="mb-3 form-check">
+								<input type="checkbox" class="form-check-input" id="agreement" name="agreement" required> 
+								<label class="form-check-label" for="agreement">Accept Terms & Conditions</label>
+							</div>
+							<div class="container text-center">
+								<button type="submit" class="btn bg-primary text-white">Submit</button>
+								<button type="reset" class="btn btn-danger">Reset</button>
+							</div>
+							<div class="text-center d-flex justify-content-center align-items-center">
+								<p class="m-0">Already have an account?</p>
+								<a class="btn text-primary" th:href="@{/login}">Login</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

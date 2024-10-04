@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section>
+		<div class="container text-center" style="width: 50%;"
+			th:if="${message}">
+			<div class="alert" role="alert" th:text="${message.content}"
+				th:classappend="'alert-' + ${message.type}"></div>
+		</div>
+	</section>
+</body>
+</html>
